@@ -1,4 +1,3 @@
-import React from 'react'
 import { socialMediaAcc } from '../../../utils/socialMediaAccounts'
 import ButtonWithLink from '../../button/buttonWithLink'
 

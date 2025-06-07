@@ -1,40 +1,5 @@
-// import React from 'react'
-// import { Image } from 'react-bootstrap'
-// import Carousel from 'react-bootstrap/Carousel'
-// import type { CountryTypes } from '../../redux/slice/countrySlice'
-
-// interface CardWithImageTypes {
-//     countries: CountryTypes[]
-// }
-
-// const Carousal: React.FC<CardWithImageTypes> = ({ countries }) => {
-//     return (
-//         <Carousel
-//             fade
-//             interval={3000}
-//             controls={true}
-//             indicators={true}
-//             prevIcon={<span aria-hidden="true" className="text-black fs-2">{'‹'}</span>}
-//             nextIcon={<span aria-hidden="true" className="text-black fs-2">{'›'}</span>}
-//         >
-//             {countries.map(({ name, region, flag }, index) => (
-//                 <Carousel.Item key={index}>
-//                     <Image src={flag} fluid />
-//                     <Carousel.Caption>
-//                         <h3>{name}</h3>
-//                         <p>{region}</p>
-//                     </Carousel.Caption>
-//                 </Carousel.Item>
-//             ))}
-//         </Carousel>
-//     )
-// }
-
-// export default Carousal
 import React, { useState } from 'react'
 import Carousel from 'react-bootstrap/Carousel'
-import Button from 'react-bootstrap/Button'
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import { Image } from 'react-bootstrap'
 import type { CountryTypes } from '../../redux/slice/countrySlice'
 import { ICONS } from '../../utils/common/icons'
