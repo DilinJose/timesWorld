@@ -6,11 +6,16 @@ import { getAllCountries } from '../../redux/slice/countrySlice'
 import CardWithImage from '../../components/card/cardWithImage'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Button } from 'react-bootstrap'
+import { Button, Image } from 'react-bootstrap'
+import Carousal from '../../components/carousel/carousal'
+import { getRandomPair } from '../../utils/getRandomNumber'
 
 const Home = () => {
   const dispatch = useDispatch<AppDispatch>()
-  const countries = useSelector((state: RootState) => state.countries.countries)
+  const { countries, loading } = useSelector((state: RootState) => state.countries)
+  const [min = 0, max = 4] = getRandomPair(countries.length - 1)
+  const carousalCountries = countries.slice(min, max)
+  const countryFlag = countries[6]
 
   const [showCountries, setShoeCountries] = React.useState(12)
 
@@ -24,12 +29,48 @@ const Home = () => {
   }
   return (
     <Body>
-      <div className='my-5'>
-        <div className="d-flex w-100 my-3 align-items-center">
-          <div className="flex-grow-1 border-top bg-black" style={{ marginBottom: '1rem' }}></div>
-          <h1 className="mx-3 text-muted">WELCOME</h1>
-          <div className="flex-grow-1 border-bottom bg-black" style={{ marginTop: '1rem' }}></div>
+      {loading && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            height: '100vh',
+            width: '100vw',
+            backgroundColor: 'rgba(255, 255, 255, 0.7)',
+            zIndex: 1050,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <div className="spinner-border text-dark" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
         </div>
+      )}
+
+      <div className='my-5'>
+        <div className="d-flex flex-column flex-sm-row  justify-content-center gap-2">
+          <div className="bg-dark w-100" style={{ height: " 2px", marginTop: '0.5rem' }}></div>
+          <div className="fw-bold text-center fs-4">WELCOME</div>
+          <div className="bg-dark w-100" style={{ height: "2px", marginTop: '1.5rem' }}></div>
+        </div>
+
+        <Row className="d-flex flex-column-reverse flex-md-row align-items-center justify-content-between my-5">
+          <Col md={8}>
+            <Carousal countries={carousalCountries} />
+          </Col>
+
+          <Col className="ms-md-3 mt-4 mt-md-0">
+            <Image
+              className='border border-dark'
+              style={{ height: '500px', width: '100%', objectFit: 'cover' }}
+              src={countryFlag?.flag ?? ""}
+              fluid
+            />
+          </Col>
+        </Row>
         <Row>
           {countries.slice(0, showCountries).map(({ name, region, flag }, index) => {
             return (
@@ -47,7 +88,7 @@ const Home = () => {
 
         {showCountries < countries.length && (
           <div className="text-center">
-            <Button onClick={handleLoadMore} variant={'dark'}>Load More</Button>
+            <Button style={{ borderRadius: 0 }} onClick={handleLoadMore} variant={'dark'}>Load More</Button>
           </div>
         )}
       </div>
