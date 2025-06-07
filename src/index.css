@@ -1,0 +1,21 @@
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-image: none;
+  color: black;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-control-prev::before,
+.carousel-control-next::before {
+  content: '';
+}
+
+.carousel-control-prev::after,
+.carousel-control-next::after {
+  content: attr(aria-label);
+  color: black;
+  font-size: 2rem;
+}
