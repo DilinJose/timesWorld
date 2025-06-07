@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { socialMediaAcc } from '../../utils/socialMediaAccounts';
 import { IMAGES } from '../../utils/common/images';
+import ButtonWithLink from '../../components/button/buttonWithLink';
 
 
 
@@ -56,22 +57,8 @@ const Login = () => {
                                 <div className="flex-grow-1 border-top bg-danger"></div>
                             </div>
                             <div className="d-flex align-items-center justify-content-evenly">
-                                {socialMediaAcc.map(({ id, link, icon: Icon }) => (
-                                    <a
-                                        key={id}
-                                        href={link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="d-flex justify-content-center align-items-center border border-black rounded-circle"
-                                        style={{
-                                            width: '40px',
-                                            height: '40px',
-                                            textDecoration: 'none',
-                                            color: 'inherit'
-                                        }}
-                                    >
-                                        <Icon size={20} />
-                                    </a>
+                                {socialMediaAcc.map(({ id, link, icon }) => (
+                                    <ButtonWithLink id={id} link={link} icon={icon} />
                                 ))}
                             </div>
                         </div>
