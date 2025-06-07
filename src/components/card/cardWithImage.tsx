@@ -10,8 +10,8 @@ interface CardWithImageTypes {
 
 const CardWithImage: React.FC<CardWithImageTypes> = ({ key, name, region, flag }) => {
     return (
-        <div key={key}>
-            <Card className='border border-dark' style={{ width: '100%' }}>
+        <div key={key} >
+            <Card className='border border-dark radius-none' style={{ borderRadius:0, width: '100%', boxShadow: '5px 5px 2px rgba(0, 0, 0, 0.15)' }}  >
                 <Card.Body className="d-flex flex-row flex-md-row align-items-start gap-3">
                     <Card.Img
                         src={flag}
@@ -24,7 +24,7 @@ const CardWithImage: React.FC<CardWithImageTypes> = ({ key, name, region, flag }
                     </div>
                 </Card.Body>
             </Card>
-        </div>
+        </div >
     )
 }
 
