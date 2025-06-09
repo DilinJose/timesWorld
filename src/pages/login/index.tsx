@@ -326,6 +326,7 @@ const Login = () => {
                             <div className="d-flex flex-column gap-3">
                                 <Form.Group controlId="email">
                                     <Form.Control
+                                        style={{ borderRadius: 0 }}
                                         type="text"
                                         placeholder="Username or email"
                                         isInvalid={!!errors.email}
@@ -353,6 +354,7 @@ const Login = () => {
                                 <Form.Group controlId="password">
                                     <Form.Control
                                         type="password"
+                                        style={{ borderRadius: 0 }}
                                         placeholder="Password"
                                         isInvalid={!!errors.password}
                                         disabled={isLoading}
@@ -374,6 +376,7 @@ const Login = () => {
 
                                 <Form.Group>
                                     <Form.Check
+                                        style={{ borderRadius: 0 }}
                                         type="checkbox"
                                         label="Keep me signed in"
                                         disabled={isLoading}
@@ -382,6 +385,7 @@ const Login = () => {
                                 </Form.Group>
 
                                 <Button
+                                    style={{ borderRadius: 0 }}
                                     variant="dark"
                                     type="submit"
                                     className="w-100"
